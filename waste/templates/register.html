@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center text-primary">Register Your Account</h1>
+
+    <div class="card shadow-lg p-5 rounded-lg">
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <div class="mb-4">
+                    <label for="id_username" class="form-label">Username</label>
+                    {{ form.username }}
+                </div>
+
+                <div class="mb-4">
+                    <label for="id_email" class="form-label">Email Address</label>
+                    {{ form.email }}
+                </div>
+
+                <div class="mb-4">
+                    <label for="id_password1" class="form-label">Password</label>
+                    {{ form.password1 }}
+                </div>
+
+                <div class="mb-4">
+                    <label for="id_password2" class="form-label">Confirm Password</label>
+                    {{ form.password2 }}
+                </div>
+
+                <div class="mb-4">
+                    <label for="id_profile_picture" class="form-label">Profile Picture</label>
+                    {{ form.profile_picture }}
+                </div>
+
+                <button class="btn btn-primary w-100 py-2" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

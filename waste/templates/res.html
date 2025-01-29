@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg" style="max-width: 400px; width: 100%;">
+        <div class="card-body text-center">
+            <h1 class="card-title mb-4">Log In or Sign Up to Access This Page</h1>
+            <p class="card-text mb-4">Please log in or create an account to view this content.</p>
+            <div class="d-grid gap-2">
+                <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Log In</a>
+                <a href="{% url 'signup' %}" class="btn btn-success btn-lg">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

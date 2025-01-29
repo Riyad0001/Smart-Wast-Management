@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    .card {
+        margin-bottom: 20px;
+    }
+    .report-photo {
+        max-width: 100%;
+        height: auto;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+</style>
+<main class="container mt-5">
+    <a href="{% url 'create_report' %}" class="btn btn-primary mb-3">Create New Report</a>
+
+    <h3>Previous Reports</h3>
+    <div class="row">
+        {% for report in reports %}
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Report Type: {{ report.get_report_type_display }}</h5>
+                    <p class="card-text"><strong>Description:</strong> {{ report.description }}</p>
+                    <p class="card-text"><strong>Bin Location:</strong> {{ report.bin.location }}</p>
+                    <p class="card-text"><strong>Reported by:</strong> {{ report.user.username }}</p>
+                    <p class="card-text"><small class="text-muted">Date: {{ report.report_date|date:"d M Y, h:i A" }}</small></p>
+                    {% if report.photo %}
+                    <img src="{{ report.photo.url }}" class="report-photo mt-3" alt="Report Photo">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">No reports available.</p>
+        {% endfor %}
+    </div>
+</main>
+{% endblock content %}

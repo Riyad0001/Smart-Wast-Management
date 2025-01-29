@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Waste Trends</h2>
+    <canvas id="wasteChart"></canvas>
+</div>
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var binUsage = {{ bin_usage|safe }};
+    var labels = binUsage.map(function(entry) { return entry.location; });
+    var data = binUsage.map(function(entry) { return entry.total_fill; });
+
+    var ctx = document.getElementById('wasteChart').getContext('2d');
+    var wasteChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Total Fill',
+                data: data,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}
+{% endblock content %}

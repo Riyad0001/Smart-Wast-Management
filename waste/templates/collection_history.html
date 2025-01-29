@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    <div class="container mt-5">
+        <h2>Collection History</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Bin Location</th>
+                    <th>Collection Time</th>
+                    <th>Collected By</th>
+                </tr>
+            </thead>
+            <td>{{ entry.bin.location }}</td>
+                    <td>{{ entry.collection_time }}</td>
+                    <td>{{ entry.collected_by }}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</body>
+{% endblock content %}

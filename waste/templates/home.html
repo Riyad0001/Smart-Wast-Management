@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="container mt-5">
+    <h1 class="dashboard-title text-center mb-5" style="color: #3b5998;">User Dashboard</h1>
+    
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card shadow-lg" style="background-color: #d1e7dd;">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Waste Trends</h5>
+                    <p class="card-text text-dark">Analyze patterns and optimize waste management strategies.</p>
+                    <a href="{% url 'waste_trends' %}" class="btn btn-success">View Trends</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-lg" style="background-color: #f1f3f5;">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Waste Bin Finder</h5>
+                    <p class="card-text text-dark">Find waste bins near your house or office.</p>
+                    <a href="{% url 'bin_list' %}" class="btn btn-dark">Find</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-lg" style="background-color: #f8d7da;">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Waste Collection Schedule</h5>
+                    <p class="card-text text-dark">Collect waste every day at a scheduled time in every bin.</p>
+                    <a href="{% url 'schedule_list' %}" class="btn btn-dark">View Schedule</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-lg" style="background-color: #cfe2ff;">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Reports Overview</h5>
+                    <p class="card-text text-dark">Access comprehensive reports on system performance.</p>
+                    <a href="{% url 'report_list' %}" class="btn btn-primary">View Reports</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-lg" style="background-color: #cff4fc;">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">User Requests</h5>
+                    <p class="card-text text-dark">Review and respond to user requests for waste management.</p>
+                    <a href="{% url 'waste_request' %}" class="btn btn-info">View Requests</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-lg" style="background-color: #fff3cd;">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Collection History</h5>
+                    <p class="card-text text-dark">Track previous waste collection schedules and history.</p>
+                    <a href="{% url 'collection_history' %}" class="btn btn-warning">View History</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-3">
+        <div class="col-md-6">
+            <div class="card shadow-lg" style="background-color: #e2e3e5;">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Profile Management</h5>
+                    <p class="card-text text-dark">Manage your profile and account information.</p>
+                    <a href="{% if user.is_authenticated %}{% url 'user_profile' %}{% else %}{% url 'login' %}{% endif %}" class="btn btn-dark">
+                        {% if user.is_authenticated %}Go to Profile{% else %}Login to View Profile{% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-lg" style="background-color: #fefefe;">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Real-Time Waste Tracking</h5>
+                    <p class="card-text text-dark">Track waste levels in bins and dumpsters using IoT sensors.</p>
+                    <a href="{% url 'feature' %}" class="btn btn-dark">View Tracking</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-lg" style="background-color: #fde2e2;">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Waste Disposal Reporting</h5>
+                    <p class="card-text text-dark">Allow users to report waste-related issues, such as overflowing bins or illegal dumping.</p>
+                    <a href="{% url 'feature' %}" class="btn btn-dark">Go</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}

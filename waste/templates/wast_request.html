@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Request Waste Collection</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="bin_id">Select Waste Bin</label>
+                <select class="form-control" id="bin_id" name="bin_id">
+                    {% for bin in bins %}
+                    <option value="{{ bin.id }}">{{ bin.location }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Request</button>
+        </form>
+{% endblock content %}

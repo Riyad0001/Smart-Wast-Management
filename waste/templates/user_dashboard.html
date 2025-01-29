@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <main class="container mt-5">
+        <h2>Your Reports</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Bin Location</th>
+                    <th>Report Type</th>
+                    <th>Description</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in user_reports %}
+                <tr>
+                    <td>{{ report.bin.location }}</td>
+                    <td>{{ report.report_type }}</td>
+                    <td>{{ report.description }}</td>
+                    <td>{{ report.timestamp }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    {% endblock content %}
+
+    
