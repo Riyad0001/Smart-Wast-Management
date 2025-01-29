@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-mcg^i&906(q#)za^esb_m)uasj7rp***z#-a%^u$yv)pg%1&eq
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://smart-wast-management.onrender.com','httpps://*.127.0.0.1']
 
 
 # Application definition
